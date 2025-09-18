@@ -1,0 +1,545 @@
+/* static/styles.css */
+
+/* === 通用样式 === */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* === 登录页面样式 (login.html) === */
+body.login-page {
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.login-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    font-size: 1rem;
+}
+
+.login-form button[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.login-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* === 主页/文件列表页面样式 (index.html) === */
+body.index-page {
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.container h1 {
+    color: #007bff;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+}
+
+.container h2 {
+    color: #007bff;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* --- 上传表单样式 --- */
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.upload-form input[type="file"],
+.upload-form input[type="text"],
+.upload-form input[type="password"] {
+    border: 1px solid #ced4da;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    font-size: 1em;
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+}
+
+.upload-form input[type="file"] {
+    cursor: pointer;
+}
+
+.upload-form input[type="file"]::file-selector-button {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.upload-form input[type="file"]::file-selector-button:hover {
+    background-color: #5a6268;
+}
+
+.upload-form button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.2s ease;
+}
+
+.upload-form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* --- 消息提示样式 --- */
+.messages {
+    margin-top: 25px;
+}
+
+.message {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.message a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.message a:hover {
+    text-decoration: underline;
+}
+
+/* --- 文件列表样式 --- */
+.file-list ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.file-list li {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    word-break: break-all;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.file-list li.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.file-info-container {
+    flex-grow: 1;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.file-main-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+}
+
+.file-meta-info {
+    display: flex;
+    align-items: center;
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 3px;
+}
+
+.file-meta-info .file-size {
+    margin-right: 15px;
+}
+
+.file-meta-info .file-time {
+    margin-right: 15px;
+    white-space: nowrap;
+}
+
+.file-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 200px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: background-color 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.play-btn {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.play-btn:hover {
+    background-color: #138496;
+}
+
+.download-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.download-btn:hover {
+    background-color: #0069d9;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.multi-download-btn {
+    background-color: #6f42c1;
+    color: white;
+}
+
+.multi-download-btn:hover {
+    background-color: #5a32a3;
+}
+
+.download-link {
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 0.85em;
+}
+
+.download-link:hover {
+    text-decoration: underline;
+}
+
+/* --- 搜索框样式 --- */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-container input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px 0 0 5px;
+    box-sizing: border-box;
+}
+
+.search-container button {
+    padding: 10px 15px;
+    border: 1px solid #ced4da;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #e9ecef;
+    cursor: pointer;
+}
+
+/* --- 分页样式 --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.pagination button:hover:not(:disabled) {
+    background-color: #e9ecef;
+}
+
+.pagination button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination button:disabled {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+/* --- 上传进度条样式 --- */
+.progress-container {
+    width: 100%;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    margin-top: 15px;
+    overflow: hidden;
+    display: none;
+}
+
+#progressBar {
+    width: 100%;
+    height: 25px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+#progressBarFill {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    text-align: center;
+    line-height: 25px;
+    color: white;
+    border-radius: 5px;
+    transition: width 0.3s ease-in-out;
+    position: relative;
+}
+
+#progressBarFill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: progressShine 2s infinite;
+}
+
+#uploadMessage, #uploadCount {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+@keyframes progressShine {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* --- 响应式设计 --- */
+@media (max-width: 600px) {
+    body.login-page {
+        padding: 10px;
+    }
+    .login-container {
+        padding: 1rem;
+    }
+
+    .container {
+        padding: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .container h1 {
+        font-size: 1.8em;
+    }
+
+    .container h2 {
+        font-size: 1.5em;
+    }
+
+    .search-container input[type="text"] {
+        width: 100%;
+    }
+
+    .file-list .file-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .file-list .action-btn,
+    .file-list .download-link {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+}
+
+/* --- 特定元素样式 --- */
+/* 登录/登出链接 */
+.auth-link {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+/* 同步文件的额外链接样式 */
+.synced-links {
+    margin-top: 5px;
+    font-size: 0.85em;
+    color: #666;
+}
+
+.synced-links a {
+    margin-right: 10px;
+}
+
+/* 音频播放器 */
+.audio-player-section {
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+#audioPlayer {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* --- 替换内联样式的类 --- */
+/* 文件状态指示器样式 */
+.status-synced {
+    color: green;
+    font-weight: bold;
+}
+
+.status-local-only {
+    color: orange;
+}
+
+.status-oss-only {
+    color: blue;
+}
+
+/* 删除密码输入框样式 */
+.delete-password-input {
+    width: 100px;
+    padding: 4px;
+    font-size: 0.8em;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    box-sizing: border-box;
+}
+
+/* 删除表单内联样式 */
+.delete-form-inline {
+    display: inline;
+}
