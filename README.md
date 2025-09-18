@@ -2,15 +2,14 @@
 
 基于 Flask 构建的轻量级应用，旨在简化 MP3 文件的上传、管理和直链分享流程。它提供自定义文件名、随机文件名生成、双直链下载以及安全的文件删除功能。
 
-**GitHub 仓库**: [yuhold/MP3](https://github.com/yuhold/MP3)
+**GitHub 仓库**: [Zhu555o/MP3](https://github.com/Zhu555o/MP3)
 
 ## ✨ 主要功能
 
 *   **MP3 文件上传**: 简单易用的网页界面，快速上传您的 MP3 文件。
-*   **自定义文件名**: 上传时可选择自定义文件名，支持中文字符，方便管理。
 *   **随机文件名生成**: 如果不提供自定义文件名，系统会自动生成一个随机且唯一的短文件名。
 *   **上传进度显示**: 前端提供上传进度条，实时显示上传状态。
-*   **双直链下载选择**: 支持在配置文件中设置两个不同的下载地址（例如，不同的域名或IP），方便用户选择下载源。
+*   **支持OSS**: 支持OSS，以实现双端备份。
 *   **文件列表展示**: 清晰列出所有已上传的 MP3 文件及其对应的下载直链。
 *   **密码保护的文件删除**: 通过简单的密码验证，安全删除不再需要的文件。
 *   **INI 配置文件**: 所有关键设置（如主机、端口、上传目录、下载地址、密钥、密码等）均通过 `server_config.ini` 文件统一管理。
@@ -28,7 +27,7 @@
 
 1.  **克隆仓库**:
     ```bash
-    git clone https://github.com/yuhold/MP3.git
+    git clone https://github.com/Zhu555o/MP3.git
     cd MP3
     ```
 
@@ -164,8 +163,8 @@ DELETE_PASSWORD = 请修改此密码
 *   改进代码
 *   完善文档
 
-如果您有任何问题或建议，请随时通过 [GitHub Issues](https://github.com/yuhold/MP3/issues) 提出。
+如果您有任何问题或建议，请随时通过 [GitHub Issues](https://github.com/Zhu555o/MP3.git/issues) 提出。
 
 ## 📄 许可证
 
-本项目采用 MIT 许可证。详见 [LICENSE](https://github.com/yuhold/MP3/blob/main/LICENSE) 文件。
+本项目采用 MIT 许可证。详见 [LICENSE](https://github.com/Zhu555o/MP3/blob/main/LICENSE) 文件。
