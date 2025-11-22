@@ -2,7 +2,7 @@
 
 基于 Flask 构建的轻量级应用，旨在简化 MP3 文件的上传、管理和直链分享流程。它提供自定义文件名、随机文件名生成、双直链下载以及安全的文件删除功能。
 
-**GitHub 仓库**: [yuhold/MP3](https://github.com/yuhold/MP3)
+**GitHub 仓库**: [Zhu555o/MP3](https://github.com/Zhu555o/MP3)
 
 ## ✨ 主要功能
 
@@ -28,7 +28,7 @@
 
 1.  **克隆仓库**:
     ```bash
-    git clone https://github.com/yuhold/MP3.git
+    git clone https://github.com/Zhu555o/MP3.git
     cd MP3
     ```
 
