@@ -1,0 +1,9 @@
+Flask
+Werkzeug
+configparser
+filetype
+bcrypt
+flask-login
+oss2 # 如果使用 OSS，请取消注释并安装
+celery # 如果使用 Celery，请取消注释并安装
+redis # 如果使用 Celery，请取消注释并安装
