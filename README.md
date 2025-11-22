@@ -101,6 +101,25 @@ MAX_FILE_SIZE_MB = 100
 DELETE_PASSWORD = 请修改此密码
 # 用于删除文件的密码。
 # 务必修改为一个强密码，不要使用默认值！
+ip_ban_enabled = false
+# 用于封禁IP。
+
+[OSS]
+enabled = false
+provider = 
+access_key_id = 
+access_key_secret = 
+bucket_name = 
+endpoint = 
+region = 
+cdn_domain =
+# OSS存储服务
+
+[USER]
+username = admin
+password_hash = 请修改此密码
+# 默认管理员帐户与密码
+
 ```
 
 ## 🚀 使用方法
