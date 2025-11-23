@@ -1,0 +1,52 @@
+<!-- templates/admin_logs.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员 - 操作日志</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="index-page">
+<div class="container">
+    <a href="{{ url_for('logout') }}" class="auth-link">登出</a>
+    <h1>管理员面板 - 操作日志</h1>
+    <table class="log-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>用户名</th>
+                <th>操作</th>
+                <th>详情</th>
+                <th>IP地址</th>
+                <th>时间</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for log in logs %}
+            <tr>
+                <td>{{ log[0] }}</td>
+                <td>{{ log[1] }}</td>
+                <td>{{ log[2] }}</td>
+                <td>{{ log[3] }}</td>
+                <td>{{ log[4] }}</td>
+                <td>{{ log[5] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+        {% if current_page > 1 %}
+            <a href="{{ url_for('admin_logs', page=current_page-1) }}" class="page-button">上一页</a>
+        {% endif %}
+        <span>第 {{ current_page }} 页 / 共 {{ total_pages }} 页</span>
+        {% if current_page < total_pages %}
+            <a href="{{ url_for('admin_logs', page=current_page+1) }}" class="page-button">下一页</a>
+        {% endif %}
+    </div>
+    <div class="admin-nav">
+        <a href="{{ url_for('index') }}" class="auth-link">返回主页</a>
+        <a href="{{ url_for('admin_users') }}" class="auth-link">用户管理</a>
+    </div>
+</div>
+</body>
+</html>

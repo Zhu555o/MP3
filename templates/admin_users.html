@@ -1,0 +1,124 @@
+<!-- templates/admin_users.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员 - 用户管理</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='admin.js') }}" defer></script>
+</head>
+<body class="index-page">
+<div class="container">
+    <a href="{{ url_for('logout') }}" class="auth-link">登出</a>
+    <h1>管理员面板 - 用户管理</h1>
+    <div class="admin-section">
+        <h2>创建新用户</h2>
+        <form method="post" action="{{ url_for('create_user') }}" class="upload-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+            <input type="text" name="username" placeholder="用户名" required>
+            <input type="password" name="password" placeholder="密码" required>
+            <label>
+                <input type="checkbox" name="is_admin"> 设为管理员
+            </label>
+            <button type="submit">创建用户</button>
+        </form>
+    </div>
+    <div class="admin-section">
+        <h2>待审核注册 ({{ pending_registrations|length }} / 5)</h2>
+        {% if pending_registrations %}
+            <ul>
+            {% for user in pending_registrations %}
+                <li>
+                    用户名: {{ user[1] }}, 注册时间: {{ user[2] }}
+                    <form method="post" action="{{ url_for('approve_user', user_id=user[0]) }}" class="form-inline">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+                        <input type="hidden" name="action" value="approve">
+                        <button type="submit" class="action-btn download-btn">批准</button>
+                    </form>
+                    <form method="post" action="{{ url_for('approve_user', user_id=user[0]) }}" class="form-inline">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+                        <input type="hidden" name="action" value="reject">
+                        <button type="submit" class="action-btn delete-btn">拒绝</button>
+                    </form>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>暂无待审核的注册申请。</p>
+        {% endif %}
+    </div>
+    <div class="admin-section">
+        <h2>待审核密码修改</h2>
+        {% if pending_password_changes %}
+            <ul>
+            {% for change in pending_password_changes %}
+                <li>
+                    用户: {{ change[1] }}, 申请时间: {{ change[2] }}
+                    <form method="post" action="{{ url_for('approve_user', user_id=change[0]) }}" class="form-inline">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+                        <input type="hidden" name="action" value="approve">
+                        <button type="submit" class="action-btn download-btn">批准</button>
+                    </form>
+                    <form method="post" action="{{ url_for('approve_user', user_id=change[0]) }}" class="form-inline">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+                        <input type="hidden" name="action" value="reject">
+                        <button type="submit" class="action-btn delete-btn">拒绝</button>
+                    </form>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>暂无待审核的密码修改申请。</p>
+        {% endif %}
+    </div>
+    <div class="admin-section">
+        <h2>所有用户</h2>
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>用户名</th>
+                    <th>角色</th>
+                    <th>状态</th>
+                    <th>创建方式</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user[0] }}</td>
+                    <td>{{ user[1] }}</td>
+                    <td>{% if user[2] %}管理员{% else %}普通用户{% endif %}</td>
+                    <td>{% if user[3] %}活跃{% else %}<span class="user-status-disabled">已禁用</span>{% endif %}</td>
+                    <td>{% if user[4] %}管理员创建{% else %}用户注册{% endif %}</td>
+                    <td>{{ user[5] }}</td>
+                    <td>
+                        <form method="post" action="{{ url_for('toggle_user_status', user_id=user[0]) }}" class="form-inline">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+                            <button type="submit" class="action-btn {% if user[3] %}delete-btn{% else %}download-btn{% endif %}">
+                                {% if user[3] %}禁用{% else %}启用{% endif %}
+                            </button>
+                        </form>
+                        <form method="post" action="{{ url_for('delete_user', user_id=user[0]) }}" class="form-inline delete-user-form">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+                            <button type="submit" class="action-btn delete-btn">删除</button>
+                        </form>
+                        <form method="post" action="{{ url_for('reset_password', user_id=user[0]) }}" class="form-inline reset-password-form">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+                            <button type="submit" class="action-btn reset-password-btn">重置密码</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="admin-nav">
+        <a href="{{ url_for('index') }}" class="auth-link">返回主页</a>
+        <a href="{{ url_for('admin_logs') }}" class="auth-link">查看操作日志</a>
+    </div>
+</div>
+</body>
+</html>
